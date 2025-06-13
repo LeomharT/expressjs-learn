@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"target": "ES2022",
+		"lib": ["ES2023"],
+		"module": "ESNext",
+		"skipLibCheck": true,
+
+		"moduleResolution": "bundler",
+
+		/* Linting */
+		"strict": true,
+		"noUnusedLocals": true
+	},
+	"exclude": ["node_modules"],
+	"include": ["./src", "module.d.ts"]
+}

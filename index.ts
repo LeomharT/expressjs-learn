@@ -1,15 +1,11 @@
 import cors from 'cors';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import express from 'express';
 import { expressjwt } from 'express-jwt';
 import auth from './src/middlewares/auth.ts';
 import errorHandler from './src/middlewares/error.ts';
 import user from './src/routes/user.ts';
 
-/**
- * Environment Variable
- */
-dotenv.config({});
 const port = process.env.PORT || 3001;
 
 /**

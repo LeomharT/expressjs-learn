@@ -1,9 +1,9 @@
 import type { Params } from 'express-jwt';
 
-console.log(process.env.AUTH_SECRET);
+console.log(process);
 
 export const auth: Params = {
-	secret: '123',
+	secret: process.env.JWT_SECRET,
 	algorithms: ['HS256'],
 };
 
