@@ -9,7 +9,7 @@ import errorHandler from './src/middlewares/error.ts';
 import { initModels } from './src/models/init-models.ts';
 import user from './src/routes/user.ts';
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 
 /**
  * Express App
@@ -32,7 +32,7 @@ app.use(
 			// Static Assets
 			/^\/assets\/.*\.(png|jpg|jpeg|gif|svg)$/,
 			// Open Api
-			'/user',
+			'/login',
 		],
 	})
 );
