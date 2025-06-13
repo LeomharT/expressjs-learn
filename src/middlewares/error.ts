@@ -17,7 +17,7 @@ function errorHandler(
 
 		res.status(500).send({
 			code: 500,
-			message: 'Unknow Service Error',
+			message: err.message || 'Unknow Service Error',
 		});
 		return;
 	}
