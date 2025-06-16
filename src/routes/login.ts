@@ -1,18 +1,52 @@
+import crypto from 'crypto';
 import { Router } from 'express';
+import jwt from 'jsonwebtoken';
+import { User } from '../models/user.ts';
+
+const { JWT_SECRET } = process.env;
 
 const router = Router({});
 
-router.get('/', (req, res) => {
-	const body = req.body;
+type BodyInput = {
+	name: string;
+	password: string;
+};
 
-	console.log(body);
+router.post('/', async (req, res) => {
+	const body: BodyInput = req.body;
 
-	res.json({
-		code: 200,
-		data: {
-			hELLO: 'World',
+	const user = await User.findOne({
+		where: {
+			name: body.name,
+			password: crypto.createHash('md5').update(body.password).digest('hex'),
 		},
 	});
+
+	if (user) {
+		const token = jwt.sign(
+			{
+				id: user.id,
+				name: user.name,
+			},
+			JWT_SECRET,
+			{
+				algorithm: 'HS256',
+				expiresIn: '1Weeks',
+			}
+		);
+
+		res.json({
+			code: 200,
+			message: 'login successfully',
+			data: token,
+		});
+	} else {
+		res.json({
+			code: 200,
+			msg: 'user not found',
+			data: undefined,
+		});
+	}
 });
 
 export default router;
