@@ -7,6 +7,7 @@ import { sequelize } from './src/config/db.ts';
 import auth from './src/middlewares/auth.ts';
 import errorHandler from './src/middlewares/error.ts';
 import { initModels } from './src/models/init-models.ts';
+import login from './src/routes/login.ts';
 import user from './src/routes/user.ts';
 
 const port = process.env.PORT;
@@ -47,6 +48,7 @@ initModels(sequelize);
  * Register Sub Router
  */
 app.use('/user', user);
+app.use('/login', login);
 app.use('/assets', express.static(path.join(path.resolve(), 'assets')));
 
 // Error Handleer

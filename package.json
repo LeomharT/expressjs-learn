@@ -1,11 +1,11 @@
 {
 	"name": "expressjs-learn",
 	"version": "1.0.0",
-	"main": "index.js",
+	"main": "index.ts",
 	"type": "module",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "nodemon src/index.ts",
+		"dev": "nodemon",
 		"build": "tsc"
 	},
 	"keywords": [],
@@ -22,6 +22,7 @@
 		"ts-node": "^10.9.2"
 	},
 	"devDependencies": {
+		"@types/cors": "^2.8.19",
 		"@types/express": "^5.0.3",
 		"@types/express-jwt": "^6.0.4",
 		"typescript": "^5.8.3"

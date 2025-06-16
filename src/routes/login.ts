@@ -9,7 +9,9 @@ router.get('/', (req, res) => {
 
 	res.json({
 		code: 200,
-		data: body,
+		data: {
+			hELLO: 'World',
+		},
 	});
 });
 
